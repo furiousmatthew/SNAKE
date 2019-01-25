@@ -1,0 +1,7 @@
+C:\Users\Mateusz\Desktop\SNAKE\SNAKE\obj\Debug\SNAKE.csprojAssemblyReference.cache
+C:\Users\Mateusz\Desktop\SNAKE\SNAKE\obj\Debug\SNAKE.csproj.CoreCompileInputs.cache
+C:\Users\Mateusz\Desktop\SNAKE\SNAKE\bin\Debug\SNAKE.exe.config
+C:\Users\Mateusz\Desktop\SNAKE\SNAKE\bin\Debug\SNAKE.exe
+C:\Users\Mateusz\Desktop\SNAKE\SNAKE\bin\Debug\SNAKE.pdb
+C:\Users\Mateusz\Desktop\SNAKE\SNAKE\obj\Debug\SNAKE.exe
+C:\Users\Mateusz\Desktop\SNAKE\SNAKE\obj\Debug\SNAKE.pdb
