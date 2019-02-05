@@ -10,10 +10,17 @@ namespace SNAKE
     {
         static void Main()
         {
+            int sizeX, sizeY;
+            sizeX = Console.WindowHeight;
+            sizeY = Console.WindowWidth;
 
+            Console.WriteLine(sizeX + "  " + sizeY);
 
-            Console.SetCursorPosition(30, 20);
-            Console.ReadKey();
+            //Console.SetWindowSize(230, 63);
+
+            Board board = new Board();
+            board.ViewBoard();
+            Console.ReadKey() ;
 
 
         }

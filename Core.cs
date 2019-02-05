@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    class Program
+    class Core
     {
-        static void Main(string[] args)
+        public Core ()
         {
+
+        }
+
+        public void FillArray (int sizeX, int sizeY)
+        {
+            int [,] Array = new int[sizeX, sizeY];
         }
     }
 }

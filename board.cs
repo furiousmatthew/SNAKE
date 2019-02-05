@@ -8,34 +8,46 @@ namespace SNAKE
 {
     class Board
     {
-       protected int sizeX;
-       protected int sizeY;
+       protected int _sizeX;
+       protected int _sizeY;
 
-        public Board ( int x, int y)
-        {
-            x = 250;
-            y = 250;
+        public Board (bool size = )
+        {   
+
+          
         }
 
         /// <summary>
-        /// Set the size of game board. Max 300x300
+        /// Set the size of game board. You can choose size 1/2 and full
         /// </summary>
-        /// <param name="x"> Lenght </param>
-        /// <param name="y"> Width </param>
-        public void SetBoardSize (int x, int y)
+        /// <param name="size"> 1 - 1/2 or 0 - 1</param>
+        ///
+        private void SetBoardSize (bool size)
  
         {
-            if (sizeX < 300)
-            {
-                sizeX = x;
-            }
-            
-            if (sizeY < 300)
-            {
-                sizeY = y;
-            }
+             
+                if (size == 0)
+                {
+                    _sizeX = Console.WindowWidth;
+                    _sizeY = Console.WindowHeight;
+
+                }
+                else
+                {
+                    _sizeX = Console.WindowWidth/2;
+                    _sizeY = Console.WindowHeight/2;
+                }
+
 
         }
+
+       public void ViewBoard ()
+            {
+                for (int i=1; i<_sizeX; i++)
+                {
+                Console.Write("*");
+                }
+            }
 
     }
 }
