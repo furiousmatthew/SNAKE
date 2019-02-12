@@ -14,12 +14,19 @@ namespace SNAKE
             sizeX = Console.WindowHeight;
             sizeY = Console.WindowWidth;
 
-            Console.WriteLine(sizeX + "  " + sizeY);
+            //Console.WriteLine(sizeX + "  " + sizeY);
 
             //Console.SetWindowSize(230, 63);
 
-            Board board = new Board();
-            board.ViewBoard();
+
+            //Core core = new Core();
+
+            //Board board = new Board();
+            //board.SetBoardSize(false);
+            //board.ViewBoard();
+
+            Menu menu = new Menu();
+            menu.viewMenu();
             Console.ReadKey() ;
 
 

@@ -11,7 +11,7 @@ namespace SNAKE
        protected int _sizeX;
        protected int _sizeY;
 
-        public Board (bool size = )
+        public Board (bool size = false)
         {   
 
           
@@ -22,11 +22,11 @@ namespace SNAKE
         /// </summary>
         /// <param name="size"> 1 - 1/2 or 0 - 1</param>
         ///
-        private void SetBoardSize (bool size)
+        public void SetBoardSize (bool size)
  
         {
              
-                if (size == 0)
+                if (size == false)
                 {
                     _sizeX = Console.WindowWidth;
                     _sizeY = Console.WindowHeight;

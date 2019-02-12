@@ -16,6 +16,7 @@ namespace SNAKE
         public void FillArray (int sizeX, int sizeY)
         {
             int [,] Array = new int[sizeX, sizeY];
+
         }
     }
 }
