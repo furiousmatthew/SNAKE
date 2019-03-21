@@ -6,128 +6,101 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
+    /// <summary>
+    /// To create menu you need to create string [,] array to fill menu.
+    /// </summary>
+    /// <param name = "PossitionsListArray"> String Array with menu list</param>
     class Menu
     {
-        public Menu()
-        {
+        private double HowMuchFieldsInArray;
+        private string[,] MenuOptions;
+        private Dictionary<int, Action<int>> OpcjeMenu = new Dictionary<int, Action<int>>();
 
+        public Menu(string[,] PossitionsListArray)
+        {
+            MenuOptions = PossitionsListArray;
+            HowMuchFieldsInArray = MenuOptions.Length;
+            HowMuchFieldsInArray = Math.Sqrt(HowMuchFieldsInArray);
+
+
+            for (int i = 0; i < HowMuchFieldsInArray; i++)
+            {
+                
+               OpcjeMenu.Add(i, z =>
+               {
+                    for (int a=0; a<HowMuchFieldsInArray; a++)
+                    {
+                       
+                      
+                        if (a == z)
+                        {
+                            
+                            Console.BackgroundColor = ConsoleColor.White;
+
+                        }
+                        else if (a-1 == z)
+                        {
+                            Console.BackgroundColor = ConsoleColor.Black;
+                        }
+                        Console.WriteLine(MenuOptions[a, 0]);
+                  
+                    }
+         
+                });
+            }
         }
+       
 
-        public void viewMenu ()
+
+        public int CreateMenu ()
         {
-
-            string [] MenuOptions = new string[4];
-            MenuOptions[0] = "Welcome in the game 'SNAKE' by Matt Poltorak";
-            MenuOptions[1] = "New Game";
-            MenuOptions[2] = "Options";
-            MenuOptions[3] = "Quit";
 
             int position = 1;
-            int status;
+            int status = 0;
+            
             ConsoleKeyInfo cki;
-
             do
             {
+                  OpcjeMenu[position](position);
 
-                switch (position)
-                    {
-                        case 1:
-                            {                       
-                                Console.WriteLine(MenuOptions[0]);
-                                Console.BackgroundColor = ConsoleColor.White;              
-                                Console.WriteLine(MenuOptions[1]);
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                Console.WriteLine(MenuOptions[2]);
-                                Console.WriteLine(MenuOptions[3]);
-
-                       
-                                break;
-                            }
-
-                        case 2:
-                            {
-                                Console.WriteLine(MenuOptions[0]);                           
-                                Console.WriteLine(MenuOptions[1]);
-                                Console.BackgroundColor = ConsoleColor.White;                            
-                                Console.WriteLine(MenuOptions[2]);
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                Console.WriteLine(MenuOptions[3]);
-
-                     
-
-                            break;
-                            }
-
-                        case 3:
-                            {
-                                Console.WriteLine(MenuOptions[0]);
-                                Console.WriteLine(MenuOptions[1]);
-                                Console.WriteLine(MenuOptions[2]);
-                                Console.BackgroundColor = ConsoleColor.White;
-                                Console.WriteLine(MenuOptions[3]);
-                                Console.BackgroundColor = ConsoleColor.Black;
-
-                        
-
-                            break;
-                            }
-                }
-
-              
-
-
-                cki = Console.ReadKey();
-                
+                  cki = Console.ReadKey();
 
                 switch (cki.Key)
                 {
-                   
+
 
                     case ConsoleKey.UpArrow:
                         {
                             if (position == 1)
-                            {
-                                break;
-                            }
-                            else
-                            {
                                 position--;
-                                break;
-                            }
-                            
+                            break;
+
                         }
 
                     case ConsoleKey.DownArrow:
                         {
-                            if(position == 3)
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                position++;
-                                break;
-                            }
-                            
+                            if (position != 3)
+                              position++;
+                             break;
+
+                        }
+                    case ConsoleKey.Enter:
+                        {
+                            status = position;
+                            break;
                         }
 
                 };
 
+
                 Console.Clear();
 
+            } while (cki.Key != ConsoleKey.Enter);
 
-            } while (cki.Key != ConsoleKey.Enter );
-
-
-
-
-
-
-
-
-
-
+            return status; //zwracam status 1- new game / 2- opcje / 3- wyjście z gry               
+            }
         }
 
+
     }
-}
+

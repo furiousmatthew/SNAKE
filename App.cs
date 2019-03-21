@@ -14,19 +14,25 @@ namespace SNAKE
             sizeX = Console.WindowHeight;
             sizeY = Console.WindowWidth;
 
-            //Console.WriteLine(sizeX + "  " + sizeY);
+            string[,] MenuArray = new string[4, 4];
+            MenuArray[0,0] = "Welcome in the game 'SNAKE' by Matt Poltorak";
+            MenuArray[1,0] = "New Game";
+            MenuArray[2,0] = "Options";
+            MenuArray[3,0] = "Quit";
 
-            //Console.SetWindowSize(230, 63);
+            // Options ->
+            MenuArray[2, 1] = "Opcja1";
+            MenuArray[2, 2] = "Opcja2";
+            MenuArray[2, 3] = "Opcja3";
 
 
-            //Core core = new Core();
+            Menu menu = new Menu(MenuArray); //tworzy obiekt menu
+            int wyborMenu = menu.CreateMenu(); //wyswietla menu i zwraca wartość która określa który pdpkt menu wybrałem
 
-            //Board board = new Board();
-            //board.SetBoardSize(false);
-            //board.ViewBoard();
+           
 
-            Menu menu = new Menu();
-            menu.viewMenu();
+
+
             Console.ReadKey() ;
 
 
