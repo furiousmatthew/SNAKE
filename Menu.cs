@@ -6,101 +6,122 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    /// <summary>
-    /// To create menu you need to create string [,] array to fill menu.
-    /// </summary>
-    /// <param name = "PossitionsListArray"> String Array with menu list</param>
     class Menu
     {
-        private double HowMuchFieldsInArray;
-        private string[,] MenuOptions;
-        private Dictionary<int, Action<int>> OpcjeMenu = new Dictionary<int, Action<int>>();
 
-        public Menu(string[,] PossitionsListArray)
+        public int returnValue; // Zwraca wybraną opcje menu.
+        private int position = 1; // Ponieważ zaczynamy od pozycji 1. 0 to WIADOMOSC POWITALNA
+        private double howMuchFieldsInArray;
+        private string[,] menuOptions;
+
+        private Dictionary<int, Action<int>> opcjeMenu = new Dictionary<int, Action<int>>();
+        private Dictionary<int, Action<int>> opcjeMenuDodatkowe = new Dictionary<int, Action<int>>();
+     
+        public Menu(string[,] possitionsListArray)
         {
-            MenuOptions = PossitionsListArray;
-            HowMuchFieldsInArray = MenuOptions.Length;
-            HowMuchFieldsInArray = Math.Sqrt(HowMuchFieldsInArray);
+            menuOptions = possitionsListArray;
+            howMuchFieldsInArray = menuOptions.GetLength(0); 
+           
 
 
-            for (int i = 0; i < HowMuchFieldsInArray; i++)
+
+
+            for (int i = 0; i < howMuchFieldsInArray; i++)
             {
                 
-               OpcjeMenu.Add(i, z =>
+               opcjeMenu.Add(i, z =>
                {
-                    for (int a=0; a<HowMuchFieldsInArray; a++)
+                    for (int j=0; j<howMuchFieldsInArray; j++)
                     {
-                       
-                      
-                        if (a == z)
-                        {
-                            
+                                             
+                        if (j == z)
+                        {                           
                             Console.BackgroundColor = ConsoleColor.White;
-
                         }
-                        else if (a-1 == z)
+                        else if (j-1 == z)
                         {
                             Console.BackgroundColor = ConsoleColor.Black;
                         }
-                        Console.WriteLine(MenuOptions[a, 0]);
+
+                        Console.WriteLine(menuOptions[j, 0]);
                   
                     }
          
                 });
             }
-        }
-       
+
+            // Checking the addon menu (after main) is it exist
+            for (int i = 0; i < howMuchFieldsInArray; i++)
+            {
+                for (int j = 1; j < menuOptions.GetLength(1); j++)
+                {
+                    if (menuOptions[i][j] != 0 )
+                    {
+                        opcjeMenuDodatkowe.Add(i, z =>
+                       {
+                           for (int j = 0; j < howMuchFieldsInArray; j++)
+                           {
+
+                               if (j == z)
+                               {
+                                   Console.BackgroundColor = ConsoleColor.White;
+                               }
+                               else if (j - 1 == z)
+                               {
+                                   Console.BackgroundColor = ConsoleColor.Black;
+                               }
+
+                               Console.WriteLine(menuOptions[z, ]);
+
+                           }
+
+                       }
+                        );
+                    }
+
+                }
+            }
 
 
-        public int CreateMenu ()
-        {
-
-            int position = 1;
-            int status = 0;
-            
             ConsoleKeyInfo cki;
             do
             {
-                  OpcjeMenu[position](position);
+                opcjeMenu[position](position);
 
-                  cki = Console.ReadKey();
+                cki = Console.ReadKey();
 
                 switch (cki.Key)
                 {
 
-
                     case ConsoleKey.UpArrow:
                         {
-                            if (position == 1)
+                            if (position != 1)
                                 position--;
                             break;
-
                         }
 
                     case ConsoleKey.DownArrow:
                         {
                             if (position != 3)
-                              position++;
-                             break;
-
+                                position++;
+                            break;
                         }
                     case ConsoleKey.Enter:
                         {
-                            status = position;
                             break;
                         }
 
                 };
 
-
+                Console.WriteLine(position);
                 Console.Clear();
 
             } while (cki.Key != ConsoleKey.Enter);
 
-            return status; //zwracam status 1- new game / 2- opcje / 3- wyjście z gry               
-            }
+            returnValue = position; 
+             
         }
-
-
+    }
+       
     }
 

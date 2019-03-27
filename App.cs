@@ -26,8 +26,21 @@ namespace SNAKE
             MenuArray[2, 3] = "Opcja3";
 
 
-            Menu menu = new Menu(MenuArray); //tworzy obiekt menu
-            int wyborMenu = menu.CreateMenu(); //wyswietla menu i zwraca wartość która określa który pdpkt menu wybrałem
+            Menu menu = new Menu(MenuArray); //tworzy obiekt menu i go wyświetla
+            int retMenuOption = menu.returnValue;
+            switch (retMenuOption)
+            {
+                case 1:
+                    //tutaj będzie klasa odpowiedzialna za gre
+                    //
+                    break;
+
+                case 2:
+                    // tutaj będzie wywoływało menu.options;
+                    break;
+            }
+            
+      
 
            
 
