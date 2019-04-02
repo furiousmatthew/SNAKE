@@ -53,15 +53,12 @@ namespace SNAKE
             // Checking the addon menu (after main) is it exist
             for (int i = 0; i < howMuchFieldsInArray; i++)
             {
-                for (int j = 1; j < menuOptions.GetLength(1); j++)
-                {
-                    if (menuOptions[i][j] != 0 )
-                    {
-                        opcjeMenuDodatkowe.Add(i, z =>
+                
+                   opcjeMenuDodatkowe.Add(i, z =>
                        {
-                           for (int j = 0; j < howMuchFieldsInArray; j++)
+                           int j = 1;
+                           while (String.IsNullOrEmpty(menuOptions[i, j]) == false)
                            {
-
                                if (j == z)
                                {
                                    Console.BackgroundColor = ConsoleColor.White;
@@ -70,16 +67,13 @@ namespace SNAKE
                                {
                                    Console.BackgroundColor = ConsoleColor.Black;
                                }
-
-                               Console.WriteLine(menuOptions[z, ]);
-
+                               Console.WriteLine(menuOptions[i, j]);
+                               j++;
                            }
-
                        }
                         );
-                    }
-
-                }
+                    
+                
             }
 
 
