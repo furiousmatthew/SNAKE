@@ -5,3 +5,10 @@ C:\Users\Mateusz\Desktop\SNAKE\SNAKE\bin\Debug\SNAKE.exe
 C:\Users\Mateusz\Desktop\SNAKE\SNAKE\bin\Debug\SNAKE.pdb
 C:\Users\Mateusz\Desktop\SNAKE\SNAKE\obj\Debug\SNAKE.exe
 C:\Users\Mateusz\Desktop\SNAKE\SNAKE\obj\Debug\SNAKE.pdb
+E:\MateuszaKody\SNAKE\SNAKE\bin\Debug\SNAKE.exe.config
+E:\MateuszaKody\SNAKE\SNAKE\bin\Debug\SNAKE.exe
+E:\MateuszaKody\SNAKE\SNAKE\bin\Debug\SNAKE.pdb
+E:\MateuszaKody\SNAKE\SNAKE\obj\Debug\SNAKE.csprojAssemblyReference.cache
+E:\MateuszaKody\SNAKE\SNAKE\obj\Debug\SNAKE.csproj.CoreCompileInputs.cache
+E:\MateuszaKody\SNAKE\SNAKE\obj\Debug\SNAKE.exe
+E:\MateuszaKody\SNAKE\SNAKE\obj\Debug\SNAKE.pdb

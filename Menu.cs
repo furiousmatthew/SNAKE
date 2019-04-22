@@ -14,8 +14,7 @@ namespace SNAKE
         private double howMuchFieldsInArray;
         private string[,] menuOptions;
 
-        private Dictionary<int, Action<int>> opcjeMenu = new Dictionary<int, Action<int>>();
-        private Dictionary<int, Action<int>> opcjeMenuDodatkowe = new Dictionary<int, Action<int>>();
+     
      
         public Menu(string[,] possitionsListArray)
         {
@@ -23,64 +22,24 @@ namespace SNAKE
             howMuchFieldsInArray = menuOptions.GetLength(0); 
            
 
-
-
-
-            for (int i = 0; i < howMuchFieldsInArray; i++)
-            {
-                
-               opcjeMenu.Add(i, z =>
-               {
-                    for (int j=0; j<howMuchFieldsInArray; j++)
-                    {
-                                             
-                        if (j == z)
-                        {                           
-                            Console.BackgroundColor = ConsoleColor.White;
-                        }
-                        else if (j-1 == z)
-                        {
-                            Console.BackgroundColor = ConsoleColor.Black;
-                        }
-
-                        Console.WriteLine(menuOptions[j, 0]);
-                  
-                    }
-         
-                });
-            }
-
-            // Checking the addon menu (after main) is it exist
-            for (int i = 0; i < howMuchFieldsInArray; i++)
-            {
-                
-                   opcjeMenuDodatkowe.Add(i, z =>
-                       {
-                           int j = 1;
-                           while (String.IsNullOrEmpty(menuOptions[i, j]) == false)
-                           {
-                               if (j == z)
-                               {
-                                   Console.BackgroundColor = ConsoleColor.White;
-                               }
-                               else if (j - 1 == z)
-                               {
-                                   Console.BackgroundColor = ConsoleColor.Black;
-                               }
-                               Console.WriteLine(menuOptions[i, j]);
-                               j++;
-                           }
-                       }
-                        );
-                    
-                
-            }
-
-
             ConsoleKeyInfo cki;
             do
             {
-                opcjeMenu[position](position);
+                
+               
+                    for (int i = 0; i < howMuchFieldsInArray; i++)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Black;
+
+                        if (i == position)
+                        {
+                            Console.BackgroundColor = ConsoleColor.White;
+                        }
+
+                        Console.WriteLine(menuOptions[i, 0]);
+
+                    }
+                
 
                 cki = Console.ReadKey();
 
@@ -96,7 +55,7 @@ namespace SNAKE
 
                     case ConsoleKey.DownArrow:
                         {
-                            if (position != 3)
+                            if ((position != (menuOptions.GetLength(0) - 1)) && (String.IsNullOrEmpty(menuOptions[position, 0]) != true))
                                 position++;
                             break;
                         }
@@ -107,12 +66,75 @@ namespace SNAKE
 
                 };
 
-                Console.WriteLine(position);
+                //Console.WriteLine(position);
                 Console.Clear();
 
             } while (cki.Key != ConsoleKey.Enter);
 
             returnValue = position; 
+
+
+
+
+
+            if (returnValue != null)
+            {
+                if (!string.IsNullOrEmpty(menuOptions[returnValue, 1]))
+                {
+                    position = 0;
+                    do
+                    {
+
+
+                        
+                        int j = 1;
+                        while ((j < menuOptions.GetLength(1)) && (String.IsNullOrEmpty(menuOptions[returnValue, j]) == false))
+                        {
+                            Console.BackgroundColor = ConsoleColor.Black;
+
+                            if (j == position)
+                            {
+                                Console.BackgroundColor = ConsoleColor.White;
+                            }
+
+                            Console.WriteLine(menuOptions[returnValue, j]);
+                            j++;
+
+                        }
+
+                        cki = Console.ReadKey();
+
+                        switch (cki.Key)
+                        {
+
+                            case ConsoleKey.UpArrow:
+                                {
+                                    if (position != 1)
+                                        position--;
+                                    break;
+                                }
+
+                            case ConsoleKey.DownArrow:
+                                {
+                                    if (position != (menuOptions.GetLength(1) - 1) && (String.IsNullOrEmpty(menuOptions[returnValue, position]) != true))
+                                        position++;
+                                    break;
+                                }
+                            case ConsoleKey.Enter:
+                                {
+                                    break;
+                                }
+
+                        };
+
+                        
+                        Console.Clear();
+
+                    } while (cki.Key != ConsoleKey.Enter);
+
+                }
+
+            }
              
         }
     }
